@@ -24,11 +24,13 @@
     <script type="text/javascript">
 
         function callCrypt( returnCrypt ) {
-            cordova.plugins.Seguranca.Encrypt(returnCrypt,nativePluginResultHandler,nativePluginErrorHandler);
+           var chave = "5faa90d3038ad41ec5ed89802807965c";
+            cordova.plugins.Seguranca.Encrypt(returnCrypt,chave,nativePluginResultHandler,nativePluginErrorHandler);
         }
 
         function callDecrypt( returnCrypt ) {
-            cordova.plugins.Seguranca.Decrypt(returnCrypt,nativePluginResultHandler,nativePluginErrorHandler);
+            var chave = "5faa90d3038ad41ec5ed89802807965c";
+            cordova.plugins.Seguranca.Decrypt(returnCrypt,chave,nativePluginResultHandler,nativePluginErrorHandler);
         }
 
         function nativePluginResultHandler (result) {
