@@ -27,14 +27,24 @@
            var chave = "5faa90d3038ad41ec5ed89802807965c";
             cordova.plugins.Seguranca.Encrypt(returnCrypt,chave,nativePluginResultHandler,nativePluginErrorHandler);
         }
-
+        var x = "";
         function callDecrypt( returnCrypt ) {
             var chave = "5faa90d3038ad41ec5ed89802807965c";
-            cordova.plugins.Seguranca.Decrypt(returnCrypt,chave,nativePluginResultHandler,nativePluginErrorHandler);
+
+            cordova.plugins.Seguranca.Decrypt(returnCrypt,chave, x = function(teste){  callback(teste); }, nativePluginErrorHandler);
+            return x;
         }
 
-        function nativePluginResultHandler (result) {
-           alert("SUCCESS: \r\n"+result );
+        function retorna(returnCrypt){
+            var y = callDecrypt( returnCrypt );
+            alert("deu certo " + y );
+        }
+
+        function nativePluginResultHandler (result,callback) {
+          var soma = "";
+          soma = "teste" + result;
+          callback.apply(soma) ;
+           //alert("SUCCESS: \r\n"+soma );
         }
 
         function nativePluginErrorHandler (error) {
@@ -48,11 +58,16 @@
     <br/>
     <br/>
     <br/>
-    <button onclick="callCrypt('washington');">Criptografar String</button>
+    <center><button onclick="callCrypt('washington');">Criptografar String</button></center>
     <br/>
     <br/>
     <br/>
-    <button onclick="callDecrypt('Ezqf1yPps9Og6qgrDp7rzw==');">Descriptografar String</button>
+    <center><button onclick="callDecrypt('Ezqf1yPps9Og6qgrDp7rzw==');">Descriptografar String</button></center>
+    <br/>
+    <br/>
+    <br/>
+    <center><button onclick="retorna('Ezqf1yPps9Og6qgrDp7rzw==');">Descriptografar String</button></center>
+
 </body>
 
 </html>
